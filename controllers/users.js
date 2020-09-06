@@ -4,7 +4,7 @@ const jwt = require('jwt-simple');// creates tokens for useres when they sign in
 const bcrypt = require('bcrypt'); //hashes passowerd what will store in our database
 const passport = require('../config/passport');
 const config = require('../config/config');
-const User = require('../models/user');
+const User = require('../models/users');
 
 
 //User create route aka sign-up/// 
