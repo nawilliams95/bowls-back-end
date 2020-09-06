@@ -8,7 +8,7 @@ const BowlSchema = new Schema(
             type: String,
             required: true
         },
-        protine: {
+        protein: {
             type: [String],
             required: true
         },
@@ -16,8 +16,8 @@ const BowlSchema = new Schema(
             type: [String],
             required: true
         },
-        topings: {
-            type: String,
+        toppings: {
+            type: [String],
             required: true
         },
         sauce: {

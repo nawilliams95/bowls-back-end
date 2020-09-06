@@ -49,7 +49,7 @@ db.on('open', () => {
 // 		info: 'Why you being nosey??'
 // 	})
 // })
-// app.use('/api', require(>>controller file here<<))
+app.use('/api/bowls', require('./controllers/bowls'));
 app.use('/users', userController);
 
 /////>>>>---To make React-Router Work-----<<<</////

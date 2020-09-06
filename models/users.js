@@ -23,7 +23,7 @@ const UserSchema = new Schema(
         type: String
     },
     birthday: {
-        type: String
+        type: Date
     } 
   },
   { timestamps: true }
