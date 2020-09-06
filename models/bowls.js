@@ -21,7 +21,7 @@ const BowlSchema = new Schema(
             required: true
         },
         sauce: {
-            type: String,
+            type: [String],
             required: true
         },
     },
