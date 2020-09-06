@@ -27,9 +27,13 @@ UserRouter.post("/signup", (req, res) => {
             console.log("createdUser", createdUser);
             console.log("error", error);
             if (createdUser) {
-              let payload = {
-                id: createdUser.id,
-              };
+                let payload = { //sends, email, name, id, date account created, and birthday 
+                    id: createdUser.id,
+                    email: createdUser.email,
+                    name: createdUser.nickname || createdUser.firstName,
+                    iat: Date.now(),
+                    birthday: createdUser.birthday || 'when is your birthday'
+                  };
               console.log(payload);
               let token = jwt.encode(payload, config.jwtSecret);
               console.log(token);
@@ -61,8 +65,12 @@ UserRouter.post("/signup", (req, res) => {
           console.log("Found user. Checking password...");
           if (bcrypt.compareSync(req.body.password, user.password)) {
             console.log("Password correct, generating JWT...");
-            let payload = {
+            let payload = { //sends, email, name, id, date account created, and birthday 
               id: user.id,
+              email: user.email,
+              name: user.nickname || user.firstName,
+              iat: Date.now(),
+              birthday: user.birthday || 'when is your birthday'
             };
             let token = jwt.encode(payload, config.jwtSecret);
             console.log(token);
