@@ -23,12 +23,19 @@ UserRouter.post("/signup", (req, res) => {
         console.log("========findOne=======", user);
         if (!user) {
           console.log("Running create user");
-          User.create(req.body, (error, createdUser) => {
+          User.create(req.body, (error) => {
+            let createdUser = {
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              nickname: req.body.nickname,
+              birthday: req.body.birthday,
+              password: req.body.password,
+              email: req.body.email
+            }
             console.log("createdUser", createdUser);
             console.log("error", error);
             if (createdUser) {
                 let payload = { //sends, email, name, id, date account created, and birthday 
-                    id: createdUser.id,
                     email: createdUser.email,
                     name: createdUser.nickname || createdUser.firstName,
                     iat: Date.now(),
@@ -39,14 +46,17 @@ UserRouter.post("/signup", (req, res) => {
               console.log(token);
               res.json({
                 token: token,
+                currentUser: payload
               });
             } else {
               console.log("failed to create user");
+              alert("failed to create user")
               res.sendStatus(401);
             }
           });
         } else {
           console.log("User already exists, try logging in instead");
+          alert("User already exists, try logging in instead");
           res.sendStatus(401);
         }
       });
@@ -76,13 +86,16 @@ UserRouter.post("/signup", (req, res) => {
             console.log(token);
             res.json({
               token: token,
+              currentUser: payload
             });
           } else {
             console.log("Wrong password");
+            alert("Wrong password");
             res.sendStatus(401);
           }
         } else {
           console.log("Couldn't find user. Try signing up.");
+          alert("Couldn't find user. Try signing up.");
           res.sendStatus(401);
         }
       });
