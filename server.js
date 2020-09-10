@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require("cors");
-// const passport = require('')();
+const passport = require('./config/passport')();
+const userController = require('./controllers/users.js');
 
 
 
@@ -48,7 +49,8 @@ db.on('open', () => {
 // 		info: 'Why you being nosey??'
 // 	})
 // })
-// app.use('/api', require(>>controller file here<<))
+app.use('/api/bowls', require('./controllers/bowls'));
+app.use('/users', userController);
 
 /////>>>>---To make React-Router Work-----<<<</////
 
