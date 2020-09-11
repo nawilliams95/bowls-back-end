@@ -61,7 +61,12 @@ app.get('*', (req, res)=>{
   res.sendFile(path.resolve(`${__dirname}/public/index.html`));
 })
 
-
+//////////////////////////////////////
+// DEFAULT ROUTE
+/////////////////////////////////////
+app.get("/", (req, res) => {
+  res.redirect("/static");
+});
 
 //////////////////////////////////////
 // LISTENERS
