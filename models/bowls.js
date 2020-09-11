@@ -24,6 +24,10 @@ const BowlSchema = new Schema(
             type: [String],
             required: true
         },
+        userId: {
+            type: String,
+            required: true
+        }
     },
     { timestamps: true }
 );
